@@ -1,0 +1,21 @@
+apply plugin: 'java'
+
+sourceCompatibility = 1.7
+version = '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.seleniumhq.selenium:selenium-java:2.48.2'
+    compile 'com.codeborne:phantomjsdriver:1.2.1'
+    compile 'org.elasticsearch:elasticsearch:2.1.0'
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}
+
+
+task(crawl, dependsOn: jar, type: JavaExec ) {
+    main = 'com.autodesk.crawler.MainCrawler'
+    classpath = sourceSets.main.runtimeClasspath
+}
